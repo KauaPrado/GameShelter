@@ -1,0 +1,110 @@
+/* styles.css */
+
+/* Reset básico */
+body, h1, p, div, button, input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos gerais */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #7d1b1b; /* Cor de fundo principal */
+    color: white;
+  }
+  
+  header {
+    background-color: #000; /* Fundo do cabeçalho */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+  }
+  
+  .search-bar button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-bar .add-btn {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Cartões responsivos */
+    gap: 20px;
+    justify-items: center; /* Centraliza os cartões horizontalmente */
+  }
+  
+  .game-card {
+    background-color: #000; /* Fundo dos cartões */
+    padding: 10px;
+    border: 1px solid #fff;
+    width: 100%; /* Faz os cartões ocuparem o espaço total disponível */
+    max-width: 300px; /* Limita a largura máxima do cartão */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden; /* Evita transbordamento */
+  }
+  
+  .game-image img {
+    width: 100%; /* Ajusta a imagem ao cartão */
+    height: auto; /* Mantém a proporção da imagem */
+    border: 1px solid #fff;
+    margin-bottom: 10px;
+  }
+  
+  .game-description {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #ccc; /* Cor do texto da descrição */
+  }
+  
+  .game-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .edit-btn, .delete-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .edit-btn {
+    background-color: #555;
+    color: #fff;
+  }
+  
+  .delete-btn {
+    background-color: #a00;
+    color: #fff;
+  }
+  
