@@ -1,6 +1,6 @@
 <?php
-namespace Gameratings\app\Repository;
-USE Gameratings\Config\Database;
+namespace Ratinggames\app\Repository;
+USE Ratinggames\Config\Database;
 use PDO;
 
 

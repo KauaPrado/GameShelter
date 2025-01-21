@@ -1,7 +1,7 @@
 <?php
-namespace Gameratings\App\Models\Entity;
+namespace Ratinggames\App\Models\Entity;
 
-use Gameratings\Config\Database;
+use Ratinggames\Config\Database;
 use PDO;
 class Game {
     // private $connection;

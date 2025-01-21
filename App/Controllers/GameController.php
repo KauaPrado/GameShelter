@@ -1,9 +1,9 @@
 <?php
 namespace Ratinggames\App\Controllers;
 
-use Gameratings\App\Models\Entity\Game;
-use Gameratings\App\Repository\GameRepository;
-use Gameratings\Config\Database;
+use Ratinggames\App\Models\Entity\Game;
+use Ratinggames\App\Repository\GameRepository;
+use Ratinggames\Config\Database;
 use PDO;
 
 class GameController {
