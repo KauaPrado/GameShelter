@@ -56,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Editar Jogo</title>
 </head>
 <body>
+
     <h1>Editar Jogo</h1>
     <form action="/game/update" method="POST">
         <input type="hidden" name="id" value="<?= $game['id']; ?>">

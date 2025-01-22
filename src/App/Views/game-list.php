@@ -27,7 +27,7 @@
                     </div>
                     <div class="game-description"><?= $game['description']; ?></div>
                     <div class="game-actions">
-                    <a href="/game/edit?id=<?= $game['id']; ?>" class="btn btn-edit">Editar</a>
+                    <a href="/formEdit.php?id=<?= $game['id']; ?>" class="btn btn-edit">Editar</a>
 
 
                         <button class="delete-btn">EXCLUIR</button>
