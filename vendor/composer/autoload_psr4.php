@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Ratinggames\\' => array($baseDir . '/RatingGames'),
+    'Ratinggames\\' => array($baseDir . '/src'),
 );

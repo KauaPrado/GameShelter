@@ -1,5 +1,8 @@
 <?php
+
+
 namespace Ratinggames\app;
+require_once __DIR__ . '/../vendor/autoload.php';
 use Ratinggames\Config\Database;
 use Ratinggames\pdo;
 use Ratinggames\App\Controllers\GameController;
