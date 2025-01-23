@@ -27,14 +27,13 @@ Class GameRepository {
     }
     
     
-    public function update($id, $name, $description, $image) {
-        $query = "UPDATE games SET name = :name, description, = :description, image = :image, rating = :rating WHERE id = :id";
+    public function update($id, $title, $description, $image) {
+        $query = "UPDATE games SET title = :title, description = :description, image = :image WHERE id = :id";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':title', $title);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':image', $image);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':rating', $rating, PDO::PARAM_STR);
         return $stmt->execute();
     }
     

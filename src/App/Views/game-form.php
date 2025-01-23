@@ -5,7 +5,6 @@ use Ratinggames\app\Repository\GameRepository;
 
 $pdo = Database::connect();
 
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,12 +17,17 @@ $pdo = Database::connect();
 <body>
     <div class="form-container">
         <form action="/editar-game" method="post">
-            <label for="game-name">Nome do Jogo</label>
-            <input type="text" id="game-name" name="game-name" placeholder="Digite o nome do jogo" required />
+            <label for="game-title">Nome do Jogo</label>
+            <input type="text" id="title" name="title" placeholder="Digite o nome do jogo" required />
 
             <label for="game-description">Descrição do jogo</label>
-            <textarea id="game-description" name="game-description" placeholder="Digite a descrição" required></textarea>
-            
+            <textarea id="description" name="description" placeholder="Digite a descrição" required></textarea>
+
+
+
+            <label for="game-image">imagem</label>
+            <textarea id="image" name="image" placeholder="Digite a imagem" required></textarea>
+            <input type="text" hidden value="<?php echo $_GET['id']; ?>" id="id" name="id">
 
             <div class="buttons">
                 <button type="button" class="btn-back" onclick="history.back()">Voltar</button>
