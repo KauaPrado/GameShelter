@@ -6,43 +6,58 @@ use Ratinggames\App\Repository\GameRepository;
 use Ratinggames\Config\Database;
 use PDO;
 
-class EditGameController {
+class GameController implements Controller
+{
     private PDO $pdo;
 
     public function __construct(PDO $pdo) {
         $this->pdo = $pdo;
     }
-    public function edit($id) {
-        $gameRepository = new GameRepository($this->pdo);
-        $game = $gameRepository->getById($id);
-    
-        if ($game) {
-            require __DIR__ . '/../views/formEdit.php';
-        } else {
-            echo "Jogo não encontrado!";
-        }
+
+    public function processaRequisicao() {
+        
+       
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    // Instancia o repositório para buscar o jogo pelo ID
+    $gamerepository = new GameRepository($this->pdo);
+    $game = $gamerepository->getById($id);
+
+    // Se o jogo não for encontrado, redireciona para a lista de jogos
+    if (!$game) {
+        header("Location: game-list.php");
+        exit;
     }
-    
-    
-    public function update() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = $_POST['id'];
-            $title = $_POST['title'];
-            $description = $_POST['description'];
-            $image = $_POST['image'];
-    
-            $gameRepository = new GameRepository($this->pdo);
-            $gameRepository->update($id, $title, $description, $image);
-    
-            // Redireciona para a lista de jogos
-            header("Location: /game");
-            exit;
-        } else {
-            echo "Método inválido!";
-            exit;
-        }
+} else {
+    header("Location: game-list.php");
+    exit;
+}
+
+// Atualiza os dados no banco de dados ao enviar o formulário
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+
+    // Verifica se foi enviada uma nova imagem
+    if (!empty($_FILES['image']['name'])) {
+        $imagePath = '../../public/images/' . basename($_FILES['image']['name']);
+        move_uploaded_file($_FILES['image']['tmp_name'], $imagePath);
+    } else {
+        $imagePath = $game['image']; // Mantém a imagem atual
     }
-    
+
+    // Atualiza o jogo no banco de dados
+    $updated = $gamerepository->update($id, $title, $description, $imagePath);
+
+    if ($updated) {
+        header("Location: game-list.php");
+        exit;
+    } else {
+        echo "Erro ao atualizar o jogo!";
+    }
+}
+    }
 
 }
 
