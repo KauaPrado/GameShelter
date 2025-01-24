@@ -12,7 +12,7 @@
         <div class="search-bar">
             <input type="text" placeholder="Pesquise o Jogo" />
             <button class="filter-btn">🔍</button>
-            <button class="add-btn">+</button>
+            <a href='/adicionar-game' button class="add-btn">+</a>
         </div>
     </header>
     <main>
@@ -22,6 +22,7 @@
             <?php foreach ($games as $game):?>
                 
                 <div class="game-card">
+                    <p><?= $game['title']?></p>
                     <div class="game-image">
                         <img src="<?= $game['image'] ?: 'placeholder.png'; ?>" alt="<?= $game['title']; ?>" />
                     </div>

@@ -38,7 +38,19 @@ Class GameRepository {
     }
     
 
-    
+    public function add($title, $description, $image){
+
+        $query = 'INSERT INTO games (title, description, image) VALUES
+                (:title,
+                 :description,
+                  :image);';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':image', $image);
+        return $stmt->execute();
+
+    }
     
 
 }
