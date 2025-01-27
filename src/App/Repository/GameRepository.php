@@ -60,6 +60,15 @@ Class GameRepository {
         return $stmt->execute();
 
     }
-    
 
+    public function searchByTitle($search){
+
+        $query = 'SELECT * FROM games WHERE title LIKE :search;';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':search', "%$search%", PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //implementar na classe searching e na game-list
+    }
+    
 }

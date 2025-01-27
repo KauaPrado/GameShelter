@@ -10,8 +10,15 @@
 <body>
     <header>
         <div class="search-bar">
-            <input type="text" placeholder="Pesquise o Jogo" />
-            <button class="filter-btn">🔍</button>
+        <form action="buscar-game" method="GET">
+                <input 
+                    type="text" 
+                    name="search" 
+                    placeholder="Pesquise o Jogo" 
+                    value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>" 
+                />
+                <button type="submit" class="filter-btn">🔍</button>
+            </form>
             <a href='/adicionar-game' button class="add-btn">+</a>
         </div>
     </header>
