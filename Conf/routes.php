@@ -8,4 +8,5 @@ return [
     'POST|/editar-game' =>  Ratinggames\App\Controllers\EditGameController::class,
     'GET|/adicionar-game' => Ratinggames\App\Controllers\FormController::class,
     'POST|/adicionar-game' => Ratinggames\App\Controllers\NewGameController::class,
+    'GET|/excluir-game' => Ratinggames\App\Controllers\RemoveGameController::class,
 ];  

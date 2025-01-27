@@ -51,6 +51,15 @@ Class GameRepository {
         return $stmt->execute();
 
     }
+
+    public function remove($id){
+
+        $query = 'DELETE FROM games where id = :id;';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+
+    }
     
 
 }

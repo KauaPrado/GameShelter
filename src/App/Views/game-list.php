@@ -31,7 +31,7 @@
                     <a href="/editar-game?id=<?= $game['id']; ?>" class="btn btn-edit">Editar</a>
 
 
-                        <button class="delete-btn">EXCLUIR</button>
+                        <a href="/excluir-game?id=<?= $game['id']; ?>" class="delete-btn">EXCLUIR</a>
                     </div>
                 </div>
             <?php endforeach; ?>
