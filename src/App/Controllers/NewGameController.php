@@ -50,15 +50,22 @@ class NewGameController implements Controller
         
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $image = $_POST['image'];
-        // if (!empty($_FILES['image']['name'])) {
-        //     $imagePath = '../../public/images/' . basename($_FILES['image']['name']);
-        //     move_uploaded_file($_FILES['image']['tmp_name'], $imagePath);
-        // } else {
-        //     $imagePath = $_POST['current_image'];
-        // }
 
-        $add = $this->gamerepository->add($title, $description, $image);
+
+
+        $image = $_FILES['image'];
+        $nomeImagem = $image['name'];
+        $tmp_name = $image['tmp_name'];
+        $extension = pathinfo($nomeImagem, PATHINFO_EXTENSION);
+        $newName = uniqid().'.'.$extension;
+
+
+        $uploadDir = __DIR__ . '/../../../public/images/';
+        move_uploaded_file($tmp_name, $uploadDir.$newName);
+
+
+
+        $add = $this->gamerepository->add($title, $description, $newName);
 
         if ($add) {
             header("Location: /");

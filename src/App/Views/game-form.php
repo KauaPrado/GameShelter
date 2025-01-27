@@ -27,7 +27,7 @@ if ($isEditing) {
 </head>
 <body>
     <div class="form-container">
-        <form action="<?= $isEditing ? '/editar-game' : '/adicionar-game'; ?>" method="post">
+        <form action="<?= $isEditing ? '/editar-game' : '/adicionar-game'; ?>" method="post" enctype="multipart/form-data">
             <label for="game-title">Nome do Jogo</label>
             <input 
                 type="text" 
@@ -46,11 +46,7 @@ if ($isEditing) {
                 required><?= $isEditing && $game ? htmlspecialchars($game['description']) : ''; ?></textarea>
 
             <label for="game-image">Imagem</label>
-            <textarea 
-                id="image" 
-                name="image" 
-                placeholder="Digite a imagem" 
-                required><?= $isEditing && $game ? htmlspecialchars($game['image']) : ''; ?></textarea>
+            <input type="file" name="image" id="image" placeholder="Envie uma imagem">
             
             <?php if ($isEditing): ?>
                 <input type="hidden" value="<?= $id; ?>" id="id" name="id">

@@ -9,21 +9,18 @@ class Game {
     private readonly string $title;
     private readonly string $description;
     private readonly string $image;
-    private readonly float $rating;
 
     public function __construct(
         ?int $id,
         string $title,
         string $description,
-        string $image,
-        float $rating
+        string $image
     )
     {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
         $this->image = $image;
-        $this->rating = $rating;
     }
 
 
@@ -43,9 +40,7 @@ class Game {
         return $this->image;
     }
 
-    public function getRating(): float {
-        return $this->rating;
-    }
+
     
     // public function __construct() {
     //     $db = new Database();

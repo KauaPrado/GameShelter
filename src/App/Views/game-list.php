@@ -31,7 +31,7 @@
                 <div class="game-card">
                     <p><?= $game['title']?></p>
                     <div class="game-image">
-                        <img src="<?= $game['image'] ?: 'placeholder.png'; ?>" alt="<?= $game['title']; ?>" />
+                        <img src="/images/<?= $game['image'] ?: 'placeholder.png'; ?>" alt="<?= $game['title']; ?>" />
                     </div>
                     <div class="game-description"><?= $game['description']; ?></div>
                     <div class="game-actions">
