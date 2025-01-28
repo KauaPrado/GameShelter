@@ -29,7 +29,7 @@
             <?php foreach ($games as $game):?>
                 
                 <div class="game-card">
-                    <p><?= $game['title']?></p>
+                    <p><h1><?= $game['title']?></h1></p>
                     <div class="game-image">
                         <img src="/images/<?= $game['image'] ?: 'placeholder.png'; ?>" alt="<?= $game['title']; ?>" />
                     </div>
