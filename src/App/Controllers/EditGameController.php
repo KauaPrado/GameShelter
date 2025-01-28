@@ -50,21 +50,51 @@ class EditGameController implements Controller
         $id = $_POST['id'];
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $image = $_POST['image'];
+        $image = $_FILES['image'];
         // if (!empty($_FILES['image']['name'])) {
         //     $imagePath = '../../public/images/' . basename($_FILES['image']['name']);
         //     move_uploaded_file($_FILES['image']['tmp_name'], $imagePath);
         // } else {
         //     $imagePath = $_POST['current_image'];
         // }
+        
 
-        $updated = $this->gamerepository->update($id, $title, $description, $image);
+        if ($image["name"] != NULL)
+        {
 
-        if ($updated) {
-            header("Location: /");
-            exit;
-        } else {
-            echo "Erro ao atualizar o jogo!";
+            $nomeImagem = $image['name'];
+            $tmp_name = $image['tmp_name'];
+            $extension = pathinfo($nomeImagem, PATHINFO_EXTENSION);
+            $newImageName = uniqid().'.'.$extension;
+
+
+            $uploadDir = __DIR__ . '/../../../public/images/';
+            move_uploaded_file($tmp_name, $uploadDir.$newImageName);
+            $updated = $this->gamerepository->update($id, $title, $description, $newImageName);
+
+            if ($updated) {
+                header("Location: /");
+                exit;
+            } else {
+                echo "Erro ao atualizar o jogo!";
+            }
+
         }
+
+        else{
+            $updatedWithoutImage = $this->gamerepository->updateWithoutImage($id, $title, $description);
+            if ($updatedWithoutImage) {
+                header("Location: /");
+                exit;
+            } else {
+                echo "Erro ao atualizar o jogo!";
+            }
+
+        }
+            
+
+        }
+        
+        
     }
-}
+

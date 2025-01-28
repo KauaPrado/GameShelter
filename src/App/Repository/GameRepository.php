@@ -36,6 +36,15 @@ Class GameRepository {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
+
+    public function updateWithoutImage($id, $title, $description) {
+        $query = "UPDATE games SET title = :title, description = :description WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
     
 
     public function add($title, $description, $image){
@@ -68,7 +77,6 @@ Class GameRepository {
         $stmt->bindValue(':search', "%$search%", PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //implementar na classe searching e na game-list
     }
     
 }
