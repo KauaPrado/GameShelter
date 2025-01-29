@@ -10,4 +10,5 @@ return [
     'POST|/adicionar-game' => Ratinggames\App\Controllers\NewGameController::class,
     'GET|/excluir-game' => Ratinggames\App\Controllers\RemoveGameController::class,
     'GET|/buscar-game' => Ratinggames\App\Controllers\SearchGameController::class,
+    'GET|/login' => Ratinggames\App\Controllers\LoginController::class,
 ];  

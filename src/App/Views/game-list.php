@@ -10,6 +10,7 @@
 <body>
     <header>
         <div class="search-bar">
+        <a  href='/login'><button class="login-btn">Login</button></a>
         <form action="buscar-game" method="GET">
                 <input 
                     type="text" 
@@ -19,7 +20,8 @@
                 />
                 <button type="submit" class="filter-btn">🔍</button>
             </form>
-            <a href='/adicionar-game' button class="add-btn">+</a>
+            <a href='/adicionar-game'> <button class="add-btn">+</button></a>
+            
         </div>
     </header>
     <main>
@@ -35,10 +37,10 @@
                     </div>
                     <div class="game-description"><?= $game['description']; ?></div>
                     <div class="game-actions">
-                    <a href="/editar-game?id=<?= $game['id']; ?>" class="btn btn-edit">Editar</a>
+                    <a href="/editar-game?id=<?= $game['id']; ?>"> <button class="edit-btn">EDITAR</button></a>
 
 
-                        <a href="/excluir-game?id=<?= $game['id']; ?>" class="delete-btn">EXCLUIR</a>
+                        <a href="/excluir-game?id=<?= $game['id']; ?>"><button class="delete-btn"> EXCLUIR </button></a>
                     </div>
                 </div>
             <?php endforeach; ?>
