@@ -20,7 +20,7 @@ class LoginController implements Controller
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = filter_input(INPUT_POST, 'password'); 
         $checklogin = $this->usersrepository->UserVerify($email, $password);
-        
+
         if($checklogin){
              
             $_SESSION['logged'] = true;

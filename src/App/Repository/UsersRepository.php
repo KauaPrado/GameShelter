@@ -42,7 +42,14 @@ Class UsersRepository {
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
+    }
 
-
+    public function updatePassword($password, $id)
+    {
+        $query = 'UPDATE users SET password = :password WHERE id = :id;';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':password', password_hash($password, PASSWORD_ARGON2ID));
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
     }
 } 
