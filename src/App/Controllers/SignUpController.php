@@ -25,8 +25,7 @@ class SignUpController implements Controller
         }
         else
         {
-            echo '<script> alert("email inválido")</script>';
-            header("Location: /signUp");
+            header("Location: /signUp?sucesso=0");
         }
         
         
