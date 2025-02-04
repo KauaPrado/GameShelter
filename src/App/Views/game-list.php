@@ -11,6 +11,7 @@
     <header>
         <div class="search-bar">
       
+        <a  href='/logout'><button class='logout-btn'>Logout</button></a> 
         <form action="buscar-game" method="GET">
                 <input 
                     type="text" 
