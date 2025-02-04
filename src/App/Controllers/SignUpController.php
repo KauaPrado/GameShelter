@@ -6,7 +6,7 @@ use Ratinggames\App\Models\Entity\Users;
 use Ratinggames\App\Repository\UsersRepository;
 use Ratinggames\Config\Database;
 use PDO;
-class LoginController implements Controller
+class SignUpController implements Controller
 {
     private PDO $pdo;
     private UsersRepository $usersrepository;
@@ -17,16 +17,18 @@ class LoginController implements Controller
     }
     public function processaRequisicao(): void
     {
-        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        $password = filter_input(INPUT_POST, 'password'); 
-        $checklogin = $this->usersrepository->UserVerify($email, $password);
-        
-        if($checklogin){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $this->usersrepository->add($email, $password);
             header("Location: /");
         }
-        else{
-            header("Location: /login");
+        else
+        {
+            echo '<script> alert("email inválido")</script>';
+            header("Location: /signUp");
         }
+        
         
     }
     
