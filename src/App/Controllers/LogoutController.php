@@ -1,5 +1,3 @@
-<?php
-
 namespace Ratinggames\App\Controllers;
 
 use Ratinggames\App\Models\Entity\Users;

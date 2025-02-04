@@ -10,8 +10,7 @@
 <body>
     <header>
         <div class="search-bar">
-        <a  href='/signUp'><button class="login-btn">SignUp</button></a>
-        <a  href='/login?id=0'><button class="login-btn">Login</button></a>
+      
         <form action="buscar-game" method="GET">
                 <input 
                     type="text" 
