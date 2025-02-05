@@ -15,4 +15,6 @@ return [
     'GET|/signUp' => Ratinggames\App\Controllers\SignUpFormController::class,
     'POST|/signUp' => Ratinggames\App\Controllers\SignUpController::class,
     'GET|/logout' => Ratinggames\App\Controllers\LogoutController::class,
+    'GET|/games-json' => Ratinggames\App\Controllers\JsonGameController::class,
+    'POST|/games' => Ratinggames\App\Controllers\NewJsonGameController::class,
 ];  

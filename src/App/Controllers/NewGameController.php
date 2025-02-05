@@ -53,22 +53,21 @@ class NewGameController implements Controller
         $image = $_FILES['image'];
         
         if($image["name"] != NULL){
-        $safeFileName = pathinfo($_FILES['image']['name'], PATHINFO_BASENAME);
-        $finfo = new \finfo(FILEINFO_MIME_TYPE);
-        $mimeType = $finfo->file($_FILES['image']['tmp_name']);
+            $safeFileName = pathinfo($_FILES['image']['name'], PATHINFO_BASENAME);
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mimeType = $finfo->file($_FILES['image']['tmp_name']);
 
             if(str_starts_with($mimeType, 'image/')){
-
                 
                 $nomeImagem = $image['name'];
                 $tmp_name = $image['tmp_name'];
                 $extension = pathinfo($nomeImagem, PATHINFO_EXTENSION);
                 $newImageName = uniqid().'.'.$extension;
-
-
                 $uploadDir = __DIR__ . '/../../../public/images/';
                 move_uploaded_file($tmp_name, $uploadDir.$newImageName);
-            }else{
+            }
+            else
+            {
                 $newImageName ='';
             }
         }
