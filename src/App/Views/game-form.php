@@ -46,7 +46,7 @@ if ($isEditing) {
                 required><?= $isEditing && $game ? htmlspecialchars($game['description']) : ''; ?></textarea>
 
             <label for="game-image">Imagem</label>
-            <input type="file" name="image" id="image" placeholder="Envie uma imagem">
+            <input type="file" name="image" id="image" accept="image/*" placeholder="Envie uma imagem">
             
             <?php if ($isEditing): ?>
                 <input type="hidden" value="<?= $id; ?>" id="id" name="id">

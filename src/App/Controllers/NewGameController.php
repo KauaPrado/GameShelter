@@ -6,7 +6,7 @@ use Ratinggames\App\Models\Entity\Game;
 use Ratinggames\App\Repository\GameRepository;
 use Ratinggames\Config\Database;
 use PDO;
-
+use finfo;
 class NewGameController implements Controller
 {
     private PDO $pdo;
@@ -50,18 +50,33 @@ class NewGameController implements Controller
         
         $title = $_POST['title'];
         $description = $_POST['description'];
-
-
-
         $image = $_FILES['image'];
-        $nomeImagem = $image['name'];
-        $tmp_name = $image['tmp_name'];
-        $extension = pathinfo($nomeImagem, PATHINFO_EXTENSION);
-        $newImageName = uniqid().'.'.$extension;
+        
+        if($image["name"] != NULL){
+        $safeFileName = pathinfo($_FILES['image']['name'], PATHINFO_BASENAME);
+        $finfo = new \finfo(FILEINFO_MIME_TYPE);
+        $mimeType = $finfo->file($_FILES['image']['tmp_name']);
+
+            if(str_starts_with($mimeType, 'image/')){
+
+                
+                $nomeImagem = $image['name'];
+                $tmp_name = $image['tmp_name'];
+                $extension = pathinfo($nomeImagem, PATHINFO_EXTENSION);
+                $newImageName = uniqid().'.'.$extension;
 
 
-        $uploadDir = __DIR__ . '/../../../public/images/';
-        move_uploaded_file($tmp_name, $uploadDir.$newImageName);
+                $uploadDir = __DIR__ . '/../../../public/images/';
+                move_uploaded_file($tmp_name, $uploadDir.$newImageName);
+            }else{
+                $newImageName ='';
+            }
+        }
+        else{
+            $newImageName ='';
+        }
+
+        
 
 
 

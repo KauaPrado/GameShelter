@@ -62,26 +62,47 @@ class EditGameController implements Controller
         if ($image["name"] != NULL)
         {
 
-            $nomeImagem = $image['name'];
-            $tmp_name = $image['tmp_name'];
-            $extension = pathinfo($nomeImagem, PATHINFO_EXTENSION);
-            $newImageName = uniqid().'.'.$extension;
+            $safeFileName = pathinfo($_FILES['image']['name'], PATHINFO_BASENAME);
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mimeType = $finfo->file($_FILES['image']['tmp_name']);
 
 
-            $uploadDir = __DIR__ . '/../../../public/images/';
-            move_uploaded_file($tmp_name, $uploadDir.$newImageName);
-            $updated = $this->gamerepository->update($id, $title, $description, $newImageName);
+            if(str_starts_with($mimeType, 'image/')){
+                $nomeImagem = $image['name'];
+                $tmp_name = $image['tmp_name'];
+                $extension = pathinfo($nomeImagem, PATHINFO_EXTENSION);
+                $newImageName = uniqid().'.'.$extension;
 
-            if ($updated) {
+
+                $uploadDir = __DIR__ . '/../../../public/images/';
+                move_uploaded_file($tmp_name, $uploadDir.$newImageName);
+                $updated = $this->gamerepository->update($id, $title, $description, $newImageName);
+
+                if ($updated) {
+                    header("Location: /");
+                    exit;
+                } else {
+                    echo "Erro ao atualizar o jogo!";
+                }
+
+            }
+            else
+            {
+                $updatedWithoutImage = $this->gamerepository->updateWithoutImage($id, $title, $description);
+            if ($updatedWithoutImage) {
                 header("Location: /");
                 exit;
             } else {
                 echo "Erro ao atualizar o jogo!";
             }
+            }
+
 
         }
+            
 
-        else{
+        else
+        {
             $updatedWithoutImage = $this->gamerepository->updateWithoutImage($id, $title, $description);
             if ($updatedWithoutImage) {
                 header("Location: /");
@@ -97,4 +118,3 @@ class EditGameController implements Controller
         
         
     }
-
